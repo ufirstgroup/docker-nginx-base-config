@@ -2,7 +2,7 @@ FROM nginx:1.9
 
 # pick a big (strong) dhparam size per default
 # see https://wiki.mozilla.org/Security/Server_Side_TLS
-ARG NGINX_DHPARAM_SIZE=4096
+ENV NGINX_DHPARAM_SIZE=4096
 
 RUN mkdir -p /etc/nginx/base_config
 

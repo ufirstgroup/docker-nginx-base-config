@@ -1,4 +1,0 @@
-nginx:
-  build: .
-  ports:
-    - "8081:80"

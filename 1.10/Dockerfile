@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y wget unzip sed
 
 ENTRYPOINT ["/entrypoint.sh"]
 COPY entrypoint.sh /
+RUN chmod 755 /entrypoint.sh
 
 RUN mkdir -p /etc/nginx/base_config
 
@@ -24,3 +25,5 @@ RUN cd /tmp/ && \
 
 RUN /bin/echo 'include /etc/nginx/base_config/nginx.conf;' > /etc/nginx/nginx.conf
 RUN rm -f /etc/nginx/fastcgi.conf /etc/nginx/fastcgi_params
+
+CMD ["nginx", "-g", "daemon off;"]

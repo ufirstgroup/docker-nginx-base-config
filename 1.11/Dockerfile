@@ -16,6 +16,8 @@ COPY conf/fastcgi.conf /etc/nginx/base_config/fastcgi.conf
 COPY conf/http-defaults.conf /etc/nginx/base_config/http-defaults.conf
 COPY conf/log-formats.conf /etc/nginx/base_config/log-formats.conf
 COPY conf/nginx.conf /etc/nginx/base_config/nginx.conf
+COPY conf/nginx.conf /etc/nginx/base_config/request-id.conf
+COPY conf/nginx.conf /etc/nginx/base_config/server-defaults.conf
 
 RUN /bin/echo 'include /etc/nginx/base_config/nginx.conf;' > /etc/nginx/nginx.conf
 RUN rm -f /etc/nginx/fastcgi.conf /etc/nginx/fastcgi_params

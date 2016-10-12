@@ -7,17 +7,17 @@ ENV NGINX_DHPARAM_SIZE=4096
 RUN apt-get update && apt-get install -y wget unzip sed
 
 ENTRYPOINT ["/entrypoint.sh"]
-COPY entrypoint.sh /
+ADD entrypoint.sh /
 RUN chmod 755 /entrypoint.sh
 
 RUN mkdir -p /etc/nginx/base_config
 
-COPY conf/fastcgi.conf /etc/nginx/base_config/fastcgi.conf
-COPY conf/http-defaults.conf /etc/nginx/base_config/http-defaults.conf
-COPY conf/log-formats.conf /etc/nginx/base_config/log-formats.conf
-COPY conf/nginx.conf /etc/nginx/base_config/nginx.conf
-COPY conf/request-id.conf /etc/nginx/base_config/request-id.conf
-COPY conf/server-defaults.conf /etc/nginx/base_config/server-defaults.conf
+ADD conf/fastcgi.conf /etc/nginx/base_config/fastcgi.conf
+ADD conf/http-defaults.conf /etc/nginx/base_config/http-defaults.conf
+ADD conf/log-formats.conf /etc/nginx/base_config/log-formats.conf
+ADD conf/nginx.conf /etc/nginx/base_config/nginx.conf
+ADD conf/request-id.conf /etc/nginx/base_config/request-id.conf
+ADD conf/server-defaults.conf /etc/nginx/base_config/server-defaults.conf
 
 RUN /bin/echo 'include /etc/nginx/base_config/nginx.conf;' > /etc/nginx/nginx.conf
 RUN rm -f /etc/nginx/fastcgi.conf /etc/nginx/fastcgi_params

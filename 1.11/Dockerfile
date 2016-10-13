@@ -4,7 +4,7 @@ FROM nginx:1.11-alpine
 # see https://wiki.mozilla.org/Security/Server_Side_TLS
 ENV NGINX_DHPARAM_SIZE=4096
 
-RUN apk add --update bash curl wget unzip sed
+RUN apk add --update openssl bash curl wget unzip sed
 
 ENTRYPOINT ["/entrypoint.sh"]
 ADD entrypoint.sh /

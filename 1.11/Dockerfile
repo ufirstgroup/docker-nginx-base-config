@@ -1,10 +1,10 @@
-FROM nginx:1.11
+FROM nginx:1.11-alpine
 
 # pick a big (strong) dhparam size per default
 # see https://wiki.mozilla.org/Security/Server_Side_TLS
 ENV NGINX_DHPARAM_SIZE=4096
 
-RUN apt-get update && apt-get install -y wget unzip sed
+RUN apk add --update bash curl wget unzip sed
 
 ENTRYPOINT ["/entrypoint.sh"]
 ADD entrypoint.sh /
